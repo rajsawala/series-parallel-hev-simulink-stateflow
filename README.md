@@ -2,7 +2,7 @@
 
 This repository contains the Simulink model and supporting source files for a **Series-Parallel Hybrid Electric Vehicle (HEV)** model developed under **KPIT Apex Lab**.
 
-The project focuses on HEV energy management, torque split control, battery modelling, motor/generator control, regenerative braking, and vehicle-level simulation using MATLAB Simulink, Stateflow, and Simscape.
+The project focuses on HEV energy management, torque split control, battery modelling, motor/generator control, regenerative braking, and vehicle-level simulation using **MATLAB Simulink, Stateflow, and Simscape**.
 
 ---
 
@@ -20,7 +20,7 @@ The project focuses on HEV energy management, torque split control, battery mode
 
 ## Project Overview
 
-The project models a Series-Parallel HEV powertrain in MATLAB Simulink and Stateflow. The vehicle can operate in different modes depending on speed demand, torque demand, battery SOC, road grade, and EMS logic.
+The project models a Series-Parallel HEV powertrain in MATLAB Simulink and Stateflow. The vehicle can operate in different modes depending on speed demand, torque demand, battery SOC, road grade, and Energy Management System logic.
 
 The model includes:
 
@@ -132,7 +132,7 @@ load UrbanCycle6
 
 These `.mat` files must be available in the MATLAB current folder or MATLAB path before running the initialization script.
 
-Recommended folder structure for drive-cycle files:
+At present, the `data/` folder is kept as a placeholder for drive-cycle data. The recommended future structure is:
 
 ```text
 data/
@@ -149,6 +149,19 @@ If the drive-cycle files are stored inside `data/drive_cycles/`, update the load
 
 ```matlab
 cyclePath = fullfile('data','drive_cycles');
+
+load(fullfile(cyclePath,'UrbanCycle1.mat'));
+load(fullfile(cyclePath,'UrbanCycle2.mat'));
+load(fullfile(cyclePath,'UrbanCycle3.mat'));
+load(fullfile(cyclePath,'UrbanCycle4.mat'));
+load(fullfile(cyclePath,'UrbanCycle5.mat'));
+load(fullfile(cyclePath,'UrbanCycle6.mat'));
+```
+
+If the drive-cycle files are placed directly inside the `data/` folder, use:
+
+```matlab
+cyclePath = 'data';
 
 load(fullfile(cyclePath,'UrbanCycle1.mat'));
 load(fullfile(cyclePath,'UrbanCycle2.mat'));
@@ -198,7 +211,7 @@ scripts/HEV_Combined_Params.m
 
 This file replaces the older template initialization script. Before running the model, this script should be executed to load the required HEV parameters, battery parameters, drive-cycle signals, controller gains, and simulation variables.
 
-If the model is moved to another computer, make sure that the required drive-cycle `.mat` files are available in the MATLAB path or placed in the correct `data/drive_cycles/` folder.
+If the model is moved to another computer, make sure that the required drive-cycle `.mat` files are available in the MATLAB path or placed in the correct `data/` or `data/drive_cycles/` folder.
 
 ---
 
@@ -246,7 +259,9 @@ The MATLAB Function block logic has been extracted into `src/matlab_functions/` 
 
 ## Simulation Results Included
 
-The `assets/results/` folder contains scope screenshots for Drive Cycle 2, including:
+The `assets/results/` folder contains simulation result screenshots and scope outputs.
+
+The current results include Drive Cycle 2 outputs such as:
 
 - Torque response
 - Vehicle speed response
@@ -256,7 +271,20 @@ The `assets/results/` folder contains scope screenshots for Drive Cycle 2, inclu
 - EMS mode-related signals
 - Control output signals
 
-These results help verify the behavior of the motor, generator, battery, controller, and physical plant during the selected drive cycle.
+For adding results of other drive cycles in the future, the recommended structure is:
+
+```text
+assets/
+└── results/
+    ├── drive_cycle_1/
+    ├── drive_cycle_2/
+    ├── drive_cycle_3/
+    ├── drive_cycle_4/
+    ├── drive_cycle_5/
+    └── drive_cycle_6/
+```
+
+These results help verify the behavior of the motor, generator, battery, controller, and physical plant during different drive-cycle conditions.
 
 ---
 
@@ -278,13 +306,13 @@ Presentation/HEV_Model_Presentation.pptx
 
 ## Video Documentation
 
-A video explanation can be added here:
+A video explanation of the project can be added here:
 
 ```text
-Video Link: Add Google Drive or YouTube unlisted link here
+Video Link: Add YouTube or Google Drive link here
 ```
 
-For large video files, it is recommended to upload the video to Google Drive or YouTube as an unlisted video and add the link here instead of uploading the video directly to GitHub.
+For large video files, it is recommended to upload the video to YouTube as an unlisted/public video or to Google Drive and add the link here instead of uploading the video directly to GitHub.
 
 ---
 
@@ -316,6 +344,7 @@ For large video files, it is recommended to upload the video to Google Drive or 
 Possible improvements include:
 
 - Adding complete drive-cycle datasets inside the repository
+- Adding simulation results for all six drive cycles
 - Adding realistic fuel consumption and engine efficiency maps
 - Improving generator efficiency lookup integration
 - Adding better Stateflow hysteresis to reduce mode switching chatter
