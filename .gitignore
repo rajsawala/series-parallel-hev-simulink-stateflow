@@ -1,0 +1,33 @@
+# MATLAB / Simulink generated files
+slprj/
+*.slxc
+*.asv
+*.m~
+*.mlx.autosave
+*.autosave
+*.log
+*.bak
+
+# MATLAB cache and generated code
+codegen/
+*.mex*
+*.pdb
+*.obj
+*.dll
+*.exe
+
+# Simulink project autosave / temporary
+*.tmp
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep source model/documentation files
+!*.slx
+!*.m
+!*.md
+!*.docx
+!*.pptx
+!*.png
