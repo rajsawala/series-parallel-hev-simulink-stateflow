@@ -7,8 +7,8 @@ This repository contains the Simulink model and supporting source files for a **
 | Name | MIS | Email | Department | Institute |
 |---|---:|---|---|---|
 | Raj Sawala | 612407149 | sawalar24.extc@coeptech.ac.in | ExTC | COEP Technological University |
-| Amaan Mulla |  |  |  | COEP Technological University |
-| Karan Patil |  |  |  | COEP Technological University |
+| Amaan Mulla | 612409027 | dilippk24.instru@coeptech.ac.in  | Instru | COEP Technological University |
+| Karan Patil | 612409031 | nasarma24.instru@coeptech.ac.in  | Instru | COEP Technological University |
 
 **Mentor:** Padma Dwivedi
 
