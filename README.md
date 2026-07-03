@@ -58,7 +58,12 @@ The model includes:
 │   └── results/
 │
 ├── data/
-│   └── README.md
+│   ├── UrbanCycle1.mat
+│   ├── UrbanCycle2.mat
+│   ├── UrbanCycle3.mat
+│   ├── UrbanCycle4.mat
+│   ├── UrbanCycle5.mat
+│   └── UrbanCycle6.mat
 │
 ├── Docs/
 │   └── HEV Model Documentation Report 1.pdf
@@ -119,46 +124,19 @@ This script initializes all required MATLAB workspace variables used by the mode
 
 ## Drive Cycle Data
 
-The parameter initialization script loads six urban drive-cycle files:
-
-```matlab
-load UrbanCycle1
-load UrbanCycle2
-load UrbanCycle3
-load UrbanCycle4
-load UrbanCycle5
-load UrbanCycle6
-```
-
-These `.mat` files must be available in the MATLAB current folder or MATLAB path before running the initialization script.
-
-At present, the `data/` folder is kept as a placeholder for drive-cycle data. The recommended future structure is:
+The drive-cycle files are stored in the `data/` folder:
 
 ```text
 data/
-└── drive_cycles/
-    ├── UrbanCycle1.mat
-    ├── UrbanCycle2.mat
-    ├── UrbanCycle3.mat
-    ├── UrbanCycle4.mat
-    ├── UrbanCycle5.mat
-    └── UrbanCycle6.mat
+├── UrbanCycle1.mat
+├── UrbanCycle2.mat
+├── UrbanCycle3.mat
+├── UrbanCycle4.mat
+├── UrbanCycle5.mat
+└── UrbanCycle6.mat
 ```
 
-If the drive-cycle files are stored inside `data/drive_cycles/`, update the loading section in `HEV_Combined_Params.m` like this:
-
-```matlab
-cyclePath = fullfile('data','drive_cycles');
-
-load(fullfile(cyclePath,'UrbanCycle1.mat'));
-load(fullfile(cyclePath,'UrbanCycle2.mat'));
-load(fullfile(cyclePath,'UrbanCycle3.mat'));
-load(fullfile(cyclePath,'UrbanCycle4.mat'));
-load(fullfile(cyclePath,'UrbanCycle5.mat'));
-load(fullfile(cyclePath,'UrbanCycle6.mat'));
-```
-
-If the drive-cycle files are placed directly inside the `data/` folder, use:
+Since the drive-cycle files are inside the `data/` folder, the loading section in `HEV_Combined_Params.m` should use this format:
 
 ```matlab
 cyclePath = 'data';
@@ -171,13 +149,15 @@ load(fullfile(cyclePath,'UrbanCycle5.mat'));
 load(fullfile(cyclePath,'UrbanCycle6.mat'));
 ```
 
+This ensures that MATLAB loads the drive-cycle files correctly even when the repository root folder is selected as the current MATLAB folder.
+
 ---
 
 ## How to Open the Model
 
 1. Open MATLAB.
 
-2. Open this repository folder as the current MATLAB folder.
+2. Set this repository folder as the current MATLAB folder.
 
 3. Run the workspace initialization script:
 
@@ -211,7 +191,7 @@ scripts/HEV_Combined_Params.m
 
 This file replaces the older template initialization script. Before running the model, this script should be executed to load the required HEV parameters, battery parameters, drive-cycle signals, controller gains, and simulation variables.
 
-If the model is moved to another computer, make sure that the required drive-cycle `.mat` files are available in the MATLAB path or placed in the correct `data/` or `data/drive_cycles/` folder.
+If the model is moved to another computer, make sure that the required drive-cycle `.mat` files are available inside the `data/` folder.
 
 ---
 
@@ -343,7 +323,6 @@ For large video files, it is recommended to upload the video to YouTube as an un
 
 Possible improvements include:
 
-- Adding complete drive-cycle datasets inside the repository
 - Adding simulation results for all six drive cycles
 - Adding realistic fuel consumption and engine efficiency maps
 - Improving generator efficiency lookup integration
