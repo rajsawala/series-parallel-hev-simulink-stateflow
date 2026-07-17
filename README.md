@@ -14,7 +14,7 @@ The project focuses on HEV energy management, torque split control, battery mode
 | Amaan Mulla | 612409027 | nasarma24.instru@coeptech.ac.in | Instru | COEP Technological University |
 | Karan Patil | 612409031 | dilippk24.instru@coeptech.ac.in | Instru | COEP Technological University |
 
-**Mentor:** Padma Dwivedi
+**Mentor:** Padma Dwivedi (https://github.com/padmdhar15ald)
 
 ---
 
